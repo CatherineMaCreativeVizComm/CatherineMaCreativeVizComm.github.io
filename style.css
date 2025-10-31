@@ -8,8 +8,11 @@
   color: rgb(56, 56, 56);
   line-height: 1.2rem;
 }
+html {
+  scroll-behavior: smooth;
+}
 
-.galleryCtn *, .filterBtn{
+.galleryCtn *, .filterBtn, .download *, .date, .credit, .urldate{
   font-family: Overlock, sans-serif;
 }
 
@@ -32,6 +35,13 @@ section{
   text-align: left;
   line-height: 1.5;
 }
+
+footer .text{
+  text-align: center;
+  max-width: 40vw;
+}
+
+
 
 nav {
   width: 96vw;
@@ -72,7 +82,6 @@ nav ul li{
   list-style: none;
 }
 nav ul li a{
-
 }
 
 
@@ -87,15 +96,17 @@ section.cover{
   width: 50%;
   max-width: 700px;
 }
-
-.cover .text{
-  /* min-width: 200px; */
+section.linksIntro{
+  display: block;
+  width: auto;
+  max-width: unset;
 }
 
-.cover i{
+.cover i, .urldate, .credit{
   color: rgb(112, 112, 112);
   font-size: 14px;
   margin-top: 50px;
+  font-style: italic;
 } 
 
 .profile img{
@@ -111,14 +122,14 @@ h1{
   line-height: 1.2;
   margin: 1rem auto;
   font-weight: 900;
+  font-style: bold;
 }
 h2{
   font-size: 20px;
   margin: 1rem auto;
   font-family: Caveat, cursive;
-  font-size: 30px;
   line-height: 1.2;
-  color: rgb(255, 77, 0);
+  color: rgb(255, 0, 140);
   font-weight: 700;
 }
 
@@ -151,14 +162,14 @@ h3{
   width: 200px;
   z-index: 8;
   top: 20px;
-  transition: opacity 0.9s ease;
+  transition: all 1s ease-in-out;
   pointer-events: none;
 }
+
 
 .bkProfile{
   position: relative;
   z-index: -1;
-  transition: opacity 0.9s ease;
   pointer-events: none;
   display: flex;
   flex-direction: row;
@@ -167,8 +178,6 @@ h3{
   justify-content: flex-start;
   align-items: flex-end;
 }
-
-
 .profileStd{
   position: absolute;
   background-size: cover;
@@ -191,23 +200,6 @@ h3{
   top: -10vh;
   left: 10vw;
 }
-
-
-.signiture, .emailnotes{
-  font-family: Caveat, cursive;
-  font-size: 30px;
-  line-height: 1.2;
-  color: rgb(255, 77, 0);
-  width: 35vw;
-  font-weight: 700;
-  text-align: center;
-  margin: 4rem auto;
-}
-
-.emailnotes{
-  color: rgb(1, 178, 198);
-}
-
 
 .methodFlw{
   margin: 2rem auto;
@@ -236,9 +228,7 @@ h3{
   background-position: center;
   background-repeat: no-repeat;
 }
-.download *, .date{
-  font-family: Overlock, sans-serif;
-}
+
 .email{
   margin: 2rem auto;
   text-align: center;
@@ -248,16 +238,59 @@ h3{
 .galleryCtn{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   transition: transform 0.5s ease;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: center;
+  align-content: space-between;
   margin: 0 auto;
-  gap: 20px;
+  gap: 20px 30px;
   width: 80%;
   max-width: 1600px;
 }
+
+.articles .galleryCtn {
+  display: block;
+  width: unset;
+}
+
+.viskit .galleryCtn{
+  display: block;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 700;
+  width: 60%;
+  /* text-align: center; */
+}
+
+
+
+.cardFilter{
+  gap: 20px 0px;
+  width: 50%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  margin: 5rem auto 4rem auto;
+}
+.filterBtn{
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 30px; 
+  color: rgba(77, 77, 77, 0.482);
+}
+.filterBtn.active{
+  font-weight: 700;
+  color: rgb(255, 0, 132);
+}
+.filterDot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(77, 77, 77, 0.482);
+  margin: 5px 15px;
+  display: inline-block;
+}
+
 
 .card{
   background-size: cover;
@@ -274,27 +307,116 @@ h3{
   transform: scale3d(1, 1, 1) rotateX(-46deg) rotateY(-45deg) rotateZ(0deg) translate3d(0px, 0px, 0px) skew(0deg, 0deg); */
 }
 
-.cardFilter{
-  gap: 20px;
-  width: 50%;
-  max-width: 1440px;
-}
-.filterBtn{
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 10px auto;  
-}
-.filterBtn.active{
-  font-weight: 700;
-}
-
-
-
 .stories .card{
   width: 240px;
   height: 240px;
   position: relative;
 }
+
+.stories .cardTitle, .stories .cardRole{
+  width: 240px;
+  color: rgb(107, 107, 107);
+  text-transform: capitalize;
+}
+.stories .cardTitle{
+  font-size: 16px;
+  font-weight: 600;
+  margin: 15px auto 6px auto;
+}
+
+.articles a .card{
+  box-shadow: none;
+  background-image: unset;
+  -webkit-box-reflect: unset;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: center;
+  gap: 40px;
+  align-items: center;
+  margin: 60px auto;
+  border: solid rgba(5, 15, 81, 0.523);
+  border-width: 0 0 1px 0;
+  border-radius: unset;
+  width: fit-content;
+}
+
+.articles a .card.hover{
+}
+
+.articles .card .boxHd{
+  width: 200px;
+  height: 100px;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: top center;
+  /* border-radius: 5px; */
+  border: solid 1px rgba(60, 60, 60, 0.163);
+}
+
+.articles .card .boxBd{
+  max-width: 200px;
+  width: fit-content;
+  font-weight: 600;
+  text-align: right;
+}
+
+.articles .card .boxFt{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
+  transition: all 0.8s ease;
+}
+.articles .card .boxFt.active{
+  -webkit-line-clamp: unset;
+  margin-bottom: 30px;
+  max-width: 290px;
+}
+
+.something .galleryCtn{
+  width: 95%;
+  align-items: center;
+}
+.something .card{
+  background-image: unset;
+  -webkit-box-reflect: unset;
+  position: relative;
+  box-shadow: none;
+}
+.something .card video{
+  width: 200px;
+  height: 200px;
+}
+
+.something .cardImg{
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 400px;
+}
+
+.something .imgCaption{
+  width: 80%;
+  font-family: "Cactus Classical Serif", serif;
+  z-index: 1;
+  position: absolute;
+  left: 40%;
+  top: 70%;
+  border-radius: 3px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.405);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 10px;
+  color: black;
+  text-align: center;
+}
+
 
 .galleryCtn .cardBox {
   display: none;
@@ -320,9 +442,10 @@ h3{
   overflow: hidden;
 }
 
-.stories .card.unactive, .stories .galleryCtn a.unactive{
+.stories .card.unactive, .cardCtn.unactive, .stories .galleryCtn a.unactive{
   display: none;
 }
+
 
 .stories .cardBox .boxBd{
   overflow: auto;
@@ -342,8 +465,6 @@ h3{
   margin: 3rem auto;
 }
 
-
-
 .closeBtn{
   position: absolute;
   font-weight: 300;
@@ -355,107 +476,9 @@ h3{
   transform: rotate(45deg);
 }
 
-
-
-
-
-.articles .galleryCtn {
-  display: block;
-  width: unset;
-}
-
-.articles a .card{
-  box-shadow: none;
-  background-image: unset;
-  -webkit-box-reflect: unset;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: center;
-  gap: 40px;
-  align-items: center;
-  margin: 40px auto;
-  border: solid rgba(56, 56, 56, 0.523);
-  border-width: 0 0 2px 0;
-  border-radius: unset;
-  width: fit-content;
-}
-
-.articles a .card.hover{
-}
-
-.articles .card .boxHd{
-  width: 220px;
-  height: 190px;
-  margin-bottom: 10px;
-  background-size: cover;
-  background-position: center;
-  /* border-radius: 5px; */
-  border: solid 1px rgba(60, 60, 60, 0.048);
-}
-
-.articles .card .boxBd{
-  max-width: 240px;
-  width: fit-content;
-  font-weight: 600;
-}
-
-.articles .card .boxFt{
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 360px;
-}
-
-
-
-.something .galleryCtn {
-
-}
-
-.something .card{
-  background-image: unset;
-  -webkit-box-reflect: unset;
-  position: relative;
-  box-shadow: none;
-}
-
-.something .card video{
-  width: 200px;
-  height: 200px;
-}
-
-.cardImg{
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 400px;
-  height: 400px;
-}
-
-.something .card video, .something .card .cardImg{
-    /* position: relative;
-    top: 0;
-    left: 0;
-    transform: translateZ(-1px) scale(1.3); */
-}
-
-.imgCaption {
-    /* position: relative;
-    top: 50%;
-    left: 50%;
-    white-space: nowrap;
-    transform: translateZ(1px) translateX(-50%) translateY(-50%); */
-}
-
-
-
 .soundCtrl, .hoverIcon{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url("../something/mute.png");
   background-size: 50%;
   background-position: center;
@@ -468,6 +491,7 @@ h3{
   z-index: 5;
   border: 2px solid #0000009d;
   background-color: rgba(240, 248, 255, 0.405);
+  transition: all 0.5s ease;
 }
 .soundCtrl.active{
   background-image: url("../something/sounds.png");
@@ -480,10 +504,17 @@ h3{
   opacity: 1;
 }
 
+.stories .card .hoverIcon{
+  top: 80%;
+  left: 80%;
+}
 
-
-
-
+.articles .card .hoverIcon{
+  position: unset;
+  border: none;
+  width: 40px;
+  height: 40px;
+}
 
 .insertVideo::-webkit-media-controls {
   display: none !important;
@@ -499,8 +530,134 @@ h3{
 }
 
 
+section.viskit{
+  margin-top: 18rem;
+}
 
-@media screen and (max-width: 1360px) {
+.collectionBg{
+  position: absolute;
+  width: 80%;
+  height: 50vh;
+  left: calc(50vw - 40%);
+  top: 300px;
+  z-index: -1;
+}
+.collectionBg video{
+  height: 100%;
+}
+.linksIntro .text, .summary .text{
+  width: 45%;
+  max-width: 1200px;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-align: center;
+  background-color: #ffffff19;
+  padding: 20px;
+  margin: 3rem auto 10rem auto;
+}
+
+.viskit .btnTxt, .hllo{
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+.urldate, .credit{
+  text-align: center;
+  margin-top: 1rem;
+}
+ 
+.viskit .collapseBtn{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* gap: 2rem; */
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 0 9px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.viskit .collapseBtn .btnicon{
+  width: 90px;
+  height: 90px;
+}
+.viskit .collapseBtn .btnicon img{
+  width: 100%;
+  object-fit: cover;
+}
+.viskit .collapseBtn .btnArr{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 12px;
+  border-color: transparent transparent transparent #000000;
+  margin-right: 6px;
+  rotate: 90deg;
+  transition: all 0.5s ease;
+}
+
+.collapsePanel{
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  margin: 1rem auto;
+}
+.collapsePanel.panelOpen{
+  max-height: [content height]px;
+  display: block;
+  overflow-y: scroll;
+}
+
+.viskit .linkCtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1rem auto;
+  /* width: 90%; */
+}
+
+.linkCtn .linkTitle, .linkCtn .linkDesc{
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.linkCtn .linkTitle{
+  font-weight: 700;
+  background-color: rgb(251, 255, 0);
+}
+
+
+.scrollTxt{
+  display: inline-block; 
+  animation: scrollLft 50s linear infinite;
+}
+@keyframes scrollLft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+@media screen and (max-width: 1440px) {
+  nav ul{
+    gap: 30px;
+  }
   .about .profileStd {
     top: 12vh;
     left: 74vw;
@@ -513,11 +670,11 @@ h3{
     right: 4rem;
   }
   section.cover{
-    gap: 0;
+    margin-top: 7rem;
     width: 80%;
   }
   .profile img {
-    max-width: 300px;
+    max-width: 280px;
   }
   .articles .profileStd {
     top: -7vh;
@@ -527,72 +684,88 @@ h3{
     width: 180px;
     height: 180px;
   }
+  .stories .cardTitle, .stories .cardRole{
+    width: 180px;
+  }
   .cardFilter{
-    width:98vw;
-    gap: 9px;
-    flex-wrap: wrap;
+    width:70vw;
+    gap: 15px ;
   }
   .galleryCtn{
-    width: 98%;
-    gap: 12px;
+    width: 90%;
+    gap: 20px;
   }
   .articles .galleryCtn {
     width: 90%;
-  }
-  .articles a .card{
-    gap: 20px;
   }
   .articles .card .boxFt{
     max-width: 200px;
   }
   .articles .card .boxBd {
-    max-width: 200px;
+    max-width: 180px;
   }
-  .signiture, .emailnotes{
-    margin: 0rem auto;
+  .linksIntro .text, .summary .text{
     width: unset;
+  }
+  .collectionBg{
+    height: 20vh;
+    top: 340px;
+  }
+  .viskit .galleryCtn{
+    width: 90%;
+  }
+  .viskit .btnTxt{
+    font-size: 30px;
+  }
+  .viskit .collapseBtn .btnicon {
+    width: 50px;
+    height: 50px;
   }
 }
 
 @media screen and (max-width: 580px) {
   nav {
-    width: 99vw;
-    left: unset;
+    width: 96vw;
+    left: calc(50% - 48vw);
   }
   nav ul, .cardFilter{
     gap: 0px;
+    justify-content: space-between;
+    margin: 15px 0;
   }
   nav * {
     font-size: 11px;
-  }
-  nav li{
-    margin: 0 5px;
-    width: 60px;
+    line-height: normal;
   }
   .logoUrl {
     width: 20px;
     height: 20px;
-    margin-right: 0vw; 
+    margin-right: 0; 
   }
   section{
     margin: 3rem auto;
   }
   section.cover{
     flex-direction: column;
-    width: 90%;
+    width: 85%;
+    margin-top: 50px;
+    gap: 0;
   }
   .profile img {
-    max-width: 200px;
+    max-width: 160px;
   }
   .text{
     width: 92vw;
   }
   section.cover .text{
     text-align: center;
-    width: 90vw;
+    width: unset;
+  }
+  h1{
+    font-size: 25px;
   } 
   h2{
-    font-size: 25px;
+    font-size: 20px;
   }
   .about span, .bkRsear span{
     font-size: 15px;
@@ -617,12 +790,28 @@ h3{
   .bkRsear {
     margin: 4rem auto;
   }
+  .cardFilter{
+    width: 80vw;
+    margin: 20px auto;
+  }
   .filterBtn{
     font-size: 12px;
   }
+  .filterDot{
+    width: 5px;
+    height: 5px;
+    margin: 2px 5px;
+  }
+  .galleryCtn{
+    width: 95%;
+    gap: 10px;
+  }
   .stories .card {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
+  }
+  .stories .cardTitle, .stories .cardRole{
+    width: 120px;
   }
   .articles a .card{
     flex-direction: column;
@@ -630,23 +819,26 @@ h3{
   }
   .articles .card .boxBd {
     max-width: unset;
-    width: 95vw;
-    font-weight: 600;
+    width: 70%;
+    text-align: center;
   }
   .articles .card .boxHd{
-    width: 95vw;
+    width: 80%;
+    background-position: center;
   }
-  .articles .card .boxFt {
-    -webkit-line-clamp: 3;
+  .articles .card .boxFt{
+    -webkit-line-clamp: 5; 
     max-width: unset;
-    width: 95vw;
-    margin-bottom: 20px;
   }
-  .signiture, .emailnotes {
-    font-size: 25px;
-    width: 90%;
-    margin: 0rem auto;
+  .articles .card .boxFt.active{
+    margin-bottom: unset;
+    max-width: unset;
   }
+  footer .text{
+    width: 90vw;
+    max-width: unset;
+  }
+
   .stories .cardBox .boxBd {
     width: 99%;
     height: 100%;
@@ -657,12 +849,55 @@ h3{
     right: 1rem;
     background-color: rgba(240, 248, 255, 0.352);
   }
+  .something .galleryCtn{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
   .cardImg {
     width: 200px;
     height: 200px;
   }
-  .something .card video {
+  .something .card video{
+    width: 150px;
+    height: 150px;
+  }
+
+  .something .cardImg{
+    width: 300px;
+    height: 300px;
+  }
+
+  .something .imgCaption{
+    width: 100%;
+    left: -10%;
+  }
+  .collectionBg{
+    top: 530px;
+  }
+  .viskit .btnTxt{
+    font-size: 22px;
+  }
+  .viskit .galleryCtn {
+    font-size: 18px;
+  }
+  .linkCtn .linkTitle, .linkCtn .linkDesc{
+    width: 40vw;
+  }
+}
+@media screen and (max-width: 400px){
+  .stories .card {
     width: 90px;
     height: 90px;
+  }
+  .stories .cardTitle, .stories .cardRole{
+    width: 90px;
+    font-size: 14px;
+  }
+  .galleryCtn{
+    width: 95%;
+    gap: 20px;
   }
 }

@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentHeight = window.innerHeight;
     const heightDifference = Math.abs(currentHeight - initialHeight);
     if (heightDifference > 500) {
-      resetScrollTriggers();
       initialHeight = currentHeight;
     }
   }, 200));
@@ -19,6 +18,9 @@ async function renderPage() {
     loadCSV("projectDt.csv").then((data) => {
       drawInfo(data);
       drawProjectCards(data);
+    }),
+    loadCSV("linksDt.csv").then((data) => {
+      drawLinks(data, "div.collapsePanel", "div.collapseBtn");
     })
   ]);
 
@@ -61,7 +63,7 @@ function hoverImg(hoverDt, textBox) {
       item.style.textDecoration = "underline";
       item.style.textDecorationThickness = "2px";
       item.style.textUnderlineOffset = "5px";
-      item.style.textDecorationColor = "rgb(255, 77, 0)";
+      item.style.textDecorationColor = "#0004ffff";
       const hoverimg = document.createElement("img");
       hoverimg.classList.add("hoverImg");
       hoverimg.src = hoverDt[index].cover;
@@ -71,6 +73,7 @@ function hoverImg(hoverDt, textBox) {
       item.appendChild(hoverimg);
     })
     item.addEventListener("mouseout", () => {
+      if (hoverDt[index].cover === "") return;
       item.querySelector(".hoverImg").remove();
       item.style.textDecoration = "none";
     })
@@ -107,9 +110,28 @@ function drawProjectCards(data) {
         hoverIcon.classList.add("hoverIcon");
         hoverIcon.style.backgroundImage = "url(./works/external-link.png)"
         card.appendChild(hoverIcon);
+        card.addEventListener("mouseover", (e) => {
+          e.stopPropagation();
+          hoverIcon.classList.add("active");
+        })
+        card.addEventListener("mouseout", (e) => {
+          e.stopPropagation();
+          hoverIcon.classList.remove("active");
+        })
+
+        const cardTitle = document.createElement("div");
+        cardTitle.classList.add("cardTitle");
+        cardTitle.textContent = item.title;
+        const cardRole = document.createElement("div");
+        cardRole.classList.add("cardRole");
+        cardRole.textContent = item.role;
         cardLink.appendChild(card);
+        cardLink.appendChild(cardTitle);
+        cardLink.appendChild(cardRole);
         if (wrkGalCtn) wrkGalCtn.appendChild(cardLink);
       } else {
+        const cardCtn = document.createElement("div");
+        cardCtn.classList.add("cardCtn");
         const card = document.createElement("div");
         card.classList.add("card");
         for (let i = 0; i < cardClsList.length; i++) {
@@ -120,8 +142,25 @@ function drawProjectCards(data) {
         hoverIcon.classList.add("hoverIcon");
         hoverIcon.style.backgroundImage = "url(./works/frames.png)"
         card.appendChild(hoverIcon);
+        const cardTitle = document.createElement("div");
+        cardTitle.classList.add("cardTitle");
+        cardTitle.textContent = item.title;
+        const cardRole = document.createElement("div");
+        cardRole.classList.add("cardRole");
+        cardRole.textContent = item.role;
+        cardCtn.appendChild(card);
+        cardCtn.appendChild(cardTitle);
+        cardCtn.appendChild(cardRole);
+        card.addEventListener("mouseover", (e) => {
+          e.stopPropagation();
+          hoverIcon.classList.add("active");
+        })
+        card.addEventListener("mouseout", (e) => {
+          e.stopPropagation();
+          hoverIcon.classList.remove("active");
+        })
         if(!cardBox) return;
-        card.addEventListener("click", (e) => {
+        cardCtn.addEventListener("click", (e) => {
           e.stopPropagation();
           cardBox.classList.add("active");
           bodyBg.classList.add("active");
@@ -153,7 +192,7 @@ function drawProjectCards(data) {
         cardBox.addEventListener("click", (e) => {
           e.stopPropagation();
         });
-        if (wrkGalCtn) wrkGalCtn.appendChild(card);
+        if (wrkGalCtn) wrkGalCtn.appendChild(cardCtn);
       }
     } else if (item.group === "articles") {
       const cardLink = document.createElement("a");
@@ -171,10 +210,24 @@ function drawProjectCards(data) {
       const boxFt = document.createElement("div");
       boxFt.classList.add("boxFt");
       boxFt.textContent = item.desc;
+      const hoverIcon = document.createElement("div");
+      hoverIcon.classList.add("hoverIcon");
+      hoverIcon.style.backgroundImage = "url(./works/external-link.png)"
       card.appendChild(boxBd);
       card.appendChild(boxHd);
       card.appendChild(boxFt);
+      card.appendChild(hoverIcon);
       cardLink.appendChild(card);
+      cardLink.addEventListener("mouseover", (e) => {
+        e.stopPropagation();
+        boxFt.classList.add("active");
+        hoverIcon.classList.add("active");
+      })
+      cardLink.addEventListener("mouseout", (e) => {
+        e.stopPropagation();
+        boxFt.classList.remove("active");
+        hoverIcon.classList.remove("active");
+      })
       if (reascGalCtn) reascGalCtn.appendChild(cardLink);
     } else if (item.group === "something") {
       if (item.element1.includes("mp4")) {
@@ -241,12 +294,12 @@ function drawProjectCards(data) {
     }
   })
   const storyDt = data.filter(item => item.group === "stories");
-  filterCards(storyDt, ".stories .card")
+  filterCards(storyDt, ".stories .card", ".stories .cardFilter")
 }
 
-
-
-function filterCards(getDt, selector) {
+function filterCards(getDt, selector, filterSelector) {
+  const cardFilter = document.querySelector(filterSelector);
+  const cards = document.querySelectorAll(selector);
   const getLabels = getDt.map(item => item.label);
   const getLabelList = [];
   for (let i = 0; i < getLabels.length; i++) {
@@ -256,25 +309,17 @@ function filterCards(getDt, selector) {
   }
   const getLabelSet = new Set(getLabelList);
   const getLabelArr = [...getLabelSet];
-  const cardFilter = document.querySelector(".cardFilter");
-  const cards = document.querySelectorAll(selector);
-  cards.forEach((card, index) => {
-    const hoverIcon = card.querySelector(".hoverIcon")
-    hoverIcon.addEventListener("mouseover", () => {
-      hoverIcon.classList.add("active");
-    })
-    hoverIcon.addEventListener("mouseout", () => {
-      hoverIcon.classList.remove("active");
-    })
-  })
 
+  if (!cardFilter) return
   getLabelArr.forEach((item, index) => {
     const filterBtn = document.createElement("div");
     filterBtn.classList.add("filterBtn");
     filterBtn.textContent = item;
+    const filterDot = document.createElement("div");
+    filterDot.classList.add("filterDot");
     if (cardFilter) cardFilter.appendChild(filterBtn);
+    filterBtn.appendChild(filterDot);
   })
-  if (!cardFilter) return
   const allFilterBtns = cardFilter.querySelectorAll(".filterBtn");
   allFilterBtns.forEach((item, index) => {
     item.addEventListener("click", () => {
@@ -286,7 +331,7 @@ function filterCards(getDt, selector) {
         cards.forEach(card => {
           card.classList.remove("unactive");
           const parent = card.parentElement;
-          if (parent && parent.tagName === 'A') {
+          if (parent && parent.tagName === 'A' || parent.classList.contains("cardCtn")) {
             parent.classList.remove("unactive");
           }
         });
@@ -296,12 +341,12 @@ function filterCards(getDt, selector) {
           const parent = card.parentElement;
           if (!card.classList.contains(item.textContent)) {
             card.classList.add("unactive"); 
-            if (parent && parent.tagName === 'A') {
+            if (parent && parent.tagName === 'A' || parent.classList.contains("cardCtn")) {
               parent.classList.add("unactive");
             }
           } else {
             card.classList.remove("unactive");
-            if (parent && parent.tagName === 'A') {
+            if (parent && parent.tagName === 'A' || parent.classList.contains("cardCtn")) {
               parent.classList.remove("unactive");
             }
           }
@@ -311,6 +356,86 @@ function filterCards(getDt, selector) {
   })
 }
 
+function drawLinks(data, collaSelector, selector){
+  const collapseBtn = document.querySelectorAll(selector);
+  const collapsePanel = document.querySelectorAll(collaSelector);
+  const urldate = document.querySelector("div.urldate");
+  const collapseArrow = document.querySelectorAll(".btnArr")
+  if(urldate) urldate.textContent = data[0].updated;
+
+  const getLabels = data.map(item => item.labels);
+  const getLabelList = [];
+  for (let i = 0; i < getLabels.length; i++) {
+    getLabels[i].split(",").forEach(item => {
+      getLabelList.push(item);
+    })
+  }
+  const getLabelSet = new Set(getLabelList);
+  const getLabelArr = [...getLabelSet];
+  getLabelArr.sort();
+
+  getLabelArr.forEach((item, index) => {
+    const filterLinks = data.filter(item => item.labels.includes(getLabelArr[index]));
+    if(collapsePanel[index] && collapseBtn[index]) drawLinks(filterLinks, collapsePanel[index]);
+  })
+  function drawLinks(filterDt, colaPn){
+    const linkCtn = document.createElement("div");
+    linkCtn.classList.add("linkCtn");
+    filterDt.forEach((item, index) => {
+      const link = document.createElement("a");
+      link.setAttribute("href", item.link);
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+      const linkTitle = document.createElement("div");
+      linkTitle.classList.add("linkTitle");
+      linkTitle.textContent = item.title;
+      const linkDesc = document.createElement("div");
+      linkDesc.classList.add("linkDesc");
+      linkDesc.textContent =  item.description;
+      link.appendChild(linkTitle);
+      link.appendChild(linkDesc);
+      if(item.collection === ""){
+        linkCtn.appendChild(link);
+      }else{
+        const linkCollection = document.createElement("div");
+        linkCollection.classList.add("linkCollection");
+        linkCollection.textContent = item.collection;
+        linkCollection.appendChild(link);
+        linkCtn.appendChild(linkCollection);
+      }
+    })
+    colaPn.appendChild(linkCtn);
+  }
+  
+  collapseBtn.forEach((item, index) => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if(collapsePanel[index].classList.contains("panelOpen")){
+        collapsePanel[index].classList.remove("panelOpen");
+        collapsePanel[index].style.maxHeight = null;
+        collapseArrow[index].style.transform = "rotate(0deg)";
+      }else{
+        collapsePanel[index].classList.add("panelOpen");
+        collapsePanel[index].style.maxHeight = "60vh";
+        collapseArrow[index].style.transform = "rotate(180deg)";
+        const selectAllLinks = document.querySelectorAll(".linkTitle, .linkDesc");
+        selectAllLinks.forEach(item => {
+          const isOverFlow = item.scrollWidth > item.clientWidth;
+          if(isOverFlow){
+            const originalText = item.textContent;
+            item.textContent = "";
+            item.innerHTML = `
+              <span class="scrollTxt">
+                <span>${originalText} &nbsp;&nbsp;</span>
+                <span>${originalText} &nbsp;&nbsp;</span>
+              </span>
+            `;
+          }
+        });
+      }
+    });
+  });
+}
 
 
 async function loadHTML(fileUrl, containerId) {
