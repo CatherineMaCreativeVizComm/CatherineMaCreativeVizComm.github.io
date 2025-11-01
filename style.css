@@ -72,9 +72,12 @@ nav ul, .cardFilter{
   margin: 20px auto;
 }
 .logoUrl{
-  width: 30px;
-  height: 30px;
-  background-color: rgb(1, 209, 209);
+  width: 60px;
+  height: 60px;
+  background-image: url(../info/proIcon.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   margin-right: 10vw;
 }
 
