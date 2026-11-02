@@ -11,12 +11,11 @@ info,researchBk,,,,info/um.png,,"With a Ph.D. in Communication, my work is groun
 info,researchBk,,,,,,"I also care deeply about teaching, mentoring the next generation of data storytellers to think critically, design boldly, and experiment fearlessly.",
 stories,"scrollytelling,society,interactive",https://multimedia.scmp.com/components/2026/overtimesched-wgc/,,,img/otwkch.gif,Clock-in/out working times by department (China’s workplace grind),,"Developer, designer"
 stories,"3D,scrollytelling,multimedia,science",https://multimedia.scmp.com/infographics/news/world/article/3356851/el_nino_la_nina/,,,img/elnino.gif,El Nino: the Pacific fever,,"Developer, designer"
+stories,infographics,,"<div class=text><strong><a href="""" target=""""_blank"""">SCMP PLUS graphic: Chinese E-Commerce 2.0</a></strong></div>
+<div class=text></div>
+<img src='works/cnecomm.jpg' /> ",,img/ecomm.jpg,Chinese E-Commerce 2.0,,Designer
 stories,"multimedia,culture,interactive",https://multimedia.scmp.com/infographics/news/hong-kong/article/3356650/taipo_fire_memorial/,,,img/tpfm.gif,A city remembers,,"Developer, designer"
 stories,"society,interactive",https://multimedia.scmp.com/components/2026/overtimemetric-wgc/,,,img/otwkhr.gif,Overtime in tech (China’s workplace grind),,"Developer, designer"
-stories,"interactive,science",,"<div><iframe width=""100%"" height=""580"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoonTracker/"" scrolling=""no"" frameborder=""0""></iframe></div><br/>
-<div><iframe width=""100%"" height=""600"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoondolphin/"" scrolling=""no"" frameborder=""0""></iframe></div><br/>
-<div><iframe width=""100%"" height=""640"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoonsaudel/index.html"" frameborder=""0"" scrolling=""no""></iframe></div><br/>
-<div><iframe width=""100%"" height=""640"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoonnarra/index.html"" frameborder=""0"" scrolling=""no""></iframe></div><br/>",,img/lvty.png,Live typhoon tracker,,"Developer, designer"
 stories,"3D,multimedia,science,interactive",https://multimedia.scmp.com/infographics/news/china/article/3355504/tiangong_interactive/,,,img/tgstn.gif,Exploring China’s Tiangong space station,,"Developer, designer, 3Dmodeler"
 stories,"infographics,science,culture",,"<div class=text><strong><a href=""https://www.youngpostclub.com/spark/news/china/article/3345018/infospark-how-china-plants-its-major-crops-seed-harvest"" target=""_blank"">SCMP Spark infographic (printed): How China plants its major crops from seed to harvest</a></strong></div>
 <div class=text>This comic-style infographic introduces when seeding begins, where these crops are found and how each plant grows and matures. By blending storytelling with visual explanations, it transforms cultural/agricultural ideas into approachable, entertaining content that encourages curiosity about the real world.</div>
@@ -24,6 +23,10 @@ stories,"infographics,science,culture",,"<div class=text><strong><a href=""https
 stories,"3D,scrollytelling,multimedia,culture",https://multimedia.scmp.com/infographics/news/china/article/3339061/year_of_the_horse/,,,img/zdchrs.gif,All you need to know about the Year of the Horse,,"Developer, designer, 3Dmodeler"
 stories,"scrollytelling,society",https://multimedia.scmp.com/infographics/news/hong-kong/article/3334304/taipo_wangfuk_fire/index.html,,,img/tpfire.gif,Tai Po inferno: Hong Kong’s deadliest fire in decades,,"Developer, designer"
 stories,"scrollytelling,society,culture",https://multimedia.scmp.com/infographics/news/hong-kong/article/3332411/hk_fencing_craze/index.html,,,img/agfc.gif,Gold rush: Hong Kong’s fencing frenzy,,"Developer, planner"
+stories,"interactive,science",,"<div><iframe width=""100%"" height=""580"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoonTracker/"" scrolling=""no"" frameborder=""0""></iframe></div><br/>
+<div><iframe width=""100%"" height=""600"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoondolphin/"" scrolling=""no"" frameborder=""0""></iframe></div><br/>
+<div><iframe width=""100%"" height=""640"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoonsaudel/index.html"" frameborder=""0"" scrolling=""no""></iframe></div><br/>
+<div><iframe width=""100%"" height=""640"" src=""https://multimedia.scmp.com/embeds/2026/world/typhoonnarra/index.html"" frameborder=""0"" scrolling=""no""></iframe></div><br/>",,img/lvty.png,Live typhoon tracker,,"Developer, designer"
 stories,"3D,scrollytelling,multimedia,science",https://multimedia.scmp.com/infographics/news/hong-kong/article/3326461/,,,img/tclife.gif,When a typhoon hits Hong Kong,,"Developer, planner, 3Dmodeler"
 stories,"interactive,scrollytelling,politics",https://multimedia.scmp.com/infographics/news/china/article/3300868/china_us_powers/index.html?1,,,img/cufo.gif,The China-US face-off,,Developer
 stories,"interactive,society",https://multimedia.scmp.com/infographics/news/hong-kong/article/3275641/panda-tracker/,,,img/panda.gif,Panda twins tracker,,Developer
