@@ -1,5 +1,5 @@
 group,label,link,element1,element2,cover,title,desc,role
-info,time,,,,,,Updated: October 2026,
+info,time,,,,,,Updated: November 2026,
 info,background,,,,info/hkvictoria.png,,"Currently, I design full-stack news visualizations at South China Morning Post Graphics in Hong Kong. ",
 info,background,,,,info/beijingtns.png,,My journey has also included leading creative production at the Global-Comm Lab of China News Service and working as a graphics reporter and product manager at Xinhua Media Creatives. ,
 info,background,,,,,,"Each role taught me how to adapt, innovate, and collaborate across disciplines and cultures.",
@@ -9,9 +9,12 @@ info,skill,,,,,,"I thrive at the intersection of creativity and technology. I'm 
 info,skill,,,,info/nanyangtech.png,,"building and interactive experiences with d3.js, GSAP, and three.js. I also embrace AIGC creativity, exploring new ways to co-create with technology. ",
 info,researchBk,,,,info/um.png,,"With a Ph.D. in Communication, my work is grounded in research and reflection—studying how visual narratives inform, persuade, and resonate. ",
 info,researchBk,,,,,,"I also care deeply about teaching, mentoring the next generation of data storytellers to think critically, design boldly, and experiment fearlessly.",
+stories,infographics,,"<div class=text><strong><a href="""" target=""""_blank"""">SCMP PLUS graphic: Yuan's divided rise</a></strong></div>
+<div class=text></div>
+<img src='works/rmb_intl.jpg' /> ",,img/rmb_intl_grp.png,Yuan's divided rise,,Designer
 stories,"scrollytelling,society,interactive",https://multimedia.scmp.com/components/2026/overtimesched-wgc/,,,img/otwkch.gif,Clock-in/out working times by department (China’s workplace grind),,"Developer, designer"
 stories,"3D,scrollytelling,multimedia,science",https://multimedia.scmp.com/infographics/news/world/article/3356851/el_nino_la_nina/,,,img/elnino.gif,El Nino: the Pacific fever,,"Developer, designer"
-stories,infographics,,"<div class=text><strong><a href="""" target=""""_blank"""">SCMP PLUS graphic: Chinese E-Commerce 2.0</a></strong></div>
+stories,infographics,,"<div class=text><strong><a href=""https://www.scmp.com/plus/economy/china-economy/article/3372952/chinese-e-commerce-going-global"" target=""_blank"">SCMP PLUS graphic: Chinese E-Commerce 2.0</a></strong></div>
 <div class=text></div>
 <img src='works/cnecomm.jpg' /> ",,img/ecomm.jpg,Chinese E-Commerce 2.0,,Designer
 stories,"multimedia,culture,interactive",https://multimedia.scmp.com/infographics/news/hong-kong/article/3356650/taipo_fire_memorial/,,,img/tpfm.gif,A city remembers,,"Developer, designer"
