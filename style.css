@@ -405,19 +405,12 @@ h3{
 
 .something .imgCaption{
   width: 80%;
-  font-family: "Cactus Classical Serif", serif;
+  font-family: "Cactus Classical Serif", san-serif;
   z-index: 1;
   position: absolute;
   left: 40%;
   top: 70%;
-  border-radius: 3px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.405);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  padding: 10px;
-  color: black;
-  text-align: center;
+  color: #0000004d;
 }
 
 
